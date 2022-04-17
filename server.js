@@ -6,7 +6,7 @@ const dotenv = require('dotenv').config();
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 
 // Connect to mongodb
@@ -27,7 +27,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
-// app.use('/api/v1/', require('./routes/api/v1/index'));
+const studentRouter = require('./routes/studentRoutes');
+app.use('/student', studentRouter);
 
 // Start server
 app.listen(port, () => {
