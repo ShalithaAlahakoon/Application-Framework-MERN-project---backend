@@ -26,9 +26,18 @@ connection.once('open', () => {
 app.use(cors());
 app.use(bodyParser.json());
 
-// Routes
+// ################## Routes start ####################//
+
+//student routes
 const studentRouter = require('./routes/studentRoutes');
 app.use('/student', studentRouter);
+
+//student group routes
+const studentGroupRouter = require('./routes/studentGroupRoutes');
+app.use('/studentGroup', studentGroupRouter);
+
+
+// ################## Routes end ####################//
 
 // Start server
 app.listen(port, () => {
