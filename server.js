@@ -29,12 +29,11 @@ app.use(bodyParser.json());
 // ################## Routes start ####################//
 
 //student routes
-const studentRouter = require('./routes/studentRoutes');
-app.use('/student', studentRouter);
-
+app.use('/api/student', require('./routes/studentRoutes'));
 //student group routes
-const studentGroupRouter = require('./routes/studentGroupRoutes');
-app.use('/studentGroup', studentGroupRouter);
+app.use('/api/studentGroup', require('./routes/studentGroupRoutes'));
+//user routes
+app.use('/api/user', require('./routes/userRoutes'));
 
 
 // ################## Routes end ####################//
