@@ -27,9 +27,7 @@ const registerUser = asyncHandler(async(req, res) => {
         return res.status(400).json({
             success: false,
             message: 'User already exists'
-        });
-
-        
+        }); 
     }
 
     //hash password
@@ -82,7 +80,8 @@ const loginUser = asyncHandler(async(req, res) => {
     if(user && (await bcrypt.compare(password, user.password))) {
         res.json({
             success: true,
-            data : user
+            data : user,
+            token: genarateToken(user)
         });
     } else {
         res.status(400).json({
@@ -95,12 +94,36 @@ const loginUser = asyncHandler(async(req, res) => {
 )
 //@desc get user data
 //@route GET /api/user/getUser
-//@access public
+//@access Private
 
 const getUser = asyncHandler( async(req, res) => {
-    res.json({message: 'User data'});
+    const {_id,name, email, role} = await User.findById(req.user._id).select('-password');
+    res.status(200).json({
+        success: true,
+        data: {
+            _id,
+            name,
+            email,
+            role
+        }
+    });
+    
 }
 )
+
+//genarate token
+const genarateToken = (user) => {
+    return jwt.sign({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+    }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN
+    });
+}
+
+
 module.exports = {
     registerUser,
     loginUser,
