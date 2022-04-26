@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 //student routes
 app.use('/api/student', require('./routes/studentRoutes'));
 //student group routes
-app.use('/api/studentGroup', require('./routes/studentGroupRoutes'));
+app.use('/api/group', require('./routes/studentGroupRoutes'));
 //user routes
 app.use('/api/user', require('./routes/userRoutes'));
 

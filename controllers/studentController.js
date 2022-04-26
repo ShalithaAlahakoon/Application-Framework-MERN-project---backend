@@ -68,7 +68,7 @@ const registerStudent = asyncHandler(async (req, res) => {
     if (student) {
         return res.status(400).json({
             success: false,
-            message: 'Student already exists'
+            message: 'Student already exists with this email'
         });
     }
 
