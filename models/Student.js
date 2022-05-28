@@ -21,6 +21,10 @@ const Student = new Schema({
     address: {
         type: String,
         required: true
+    },
+    specialization:{
+        type: String,
+        required: true
     }
 });
 

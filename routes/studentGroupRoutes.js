@@ -10,7 +10,7 @@ const {
 
 router.get('/', getAllStudentGroups);
 router.get('/:id', getStudentGroupById);
-router.post('/add', registerStudentGroup);
+router.post('/insert', registerStudentGroup);
 router.patch('/update/:id', updateStudentGroup);
 router.delete('/delete/:id', deleteStudentGroup);
 
