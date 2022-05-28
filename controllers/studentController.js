@@ -52,9 +52,9 @@ const getStudentById = asyncHandler(async (req, res) => {
 
 const registerStudent = asyncHandler(async (req, res) => {
 
-    const { name, email, itNumber, phoneNumber, address } = req.body;
+    const { name, email, itNumber, phoneNumber, address,specialization } = req.body;
 
-    if (!name || !email || !itNumber || !phoneNumber || !address) {
+    if (!name || !email || !itNumber || !phoneNumber || !address || !specialization) {
         return res.status(400).json({
             success: false,
             message: 'Please enter all fields'
@@ -78,7 +78,8 @@ const registerStudent = asyncHandler(async (req, res) => {
         email,
         itNumber,
         phoneNumber,
-        address
+        address,
+        specialization
     });
 
     //save student
@@ -114,13 +115,14 @@ const updateStudent = asyncHandler(async (req, res) => {
             message: 'No student found'
         });
     } else {
-        const { name, email, itNumber, phoneNumber, address } = req.body;
+        const { name, email, itNumber, phoneNumber, address, specialization } = req.body;
 
         student.name = name;
         student.email = email;
         student.itNumber = itNumber;
         student.phoneNumber = phoneNumber;
         student.address = address;
+        student.specialization = specialization;
 
         await student.save();
 
