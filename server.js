@@ -37,6 +37,8 @@ app.use('/api/student', require('./routes/studentRoutes'));
 app.use('/api/group', require('./routes/studentGroupRoutes'));
 //user routes
 app.use('/api/user', require('./routes/userRoutes'));
+//research topic routes
+app.use('/api/researchTopic', require('./routes/researchTopicRoutes'));
 
 
 // ################## Routes end ####################//
