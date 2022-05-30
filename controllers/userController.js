@@ -10,9 +10,16 @@ const User = require('../models/user');
 
 const registerUser = asyncHandler(async(req, res) => {
 
-    const { id, name, email, mobileNumber, password, password2 } = req.body;
 
-    if(!id || !name || !email || !mobileNumber || !password || !password2) {
+    const { id, mobileNumber,  name, email, password
+        // , role 
+    } = req.body;
+
+    if(!name || !email || !password || !id || !mobileNumber) {
+
+
+    if(!id || !name || !email || !mobileNumber || !password ) {
+
         return res.status(400).json({
             success: false,
             message: 'Please enter all fields'
@@ -41,7 +48,7 @@ const registerUser = asyncHandler(async(req, res) => {
         email,
         mobileNumber,
         password: hashedPassword,
-        password2: hashedPassword,
+
     });
 
     //save user

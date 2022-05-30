@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
+
     id:{
         type: String,
         required: [true, 'Please enter your SLIIT ID number']
@@ -23,10 +24,15 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please enter a password']
     },
-    password2: {
+    mobileNumber: {
         type: String,
-        required: [true, 'Please confirm the password']
+        required: [true, 'Please add a mobile number']
+
     }
+    // role: {
+    //     type: String,
+    //     required: [true, 'Please add a role']
+    // }
 },
 {
     timestamps: true
