@@ -6,11 +6,15 @@ const ResearchTopic = new Schema({
         type: String,
         required: true
     },
-    reaserchGroup: {
+    researchGroup: {
         type: String,
         required: true
     },
     researchArea: {
+        type: String,
+        required: true
+    },
+    studentGroup:{
         type: String,
         required: true
     }

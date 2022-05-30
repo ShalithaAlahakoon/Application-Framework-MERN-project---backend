@@ -51,12 +51,13 @@ const getResearchTopicById = asyncHandler(async (req, res) => {
 
 const registerResearchTopic = asyncHandler(async (req, res) => {
 
-    const { topic, reaserchGroup, researchArea } = req.body;
+    const { topic, researchGroup, researchArea , studentGroup} = req.body;
 
-    if (!topic || !reaserchGroup || !researchArea) {
+    if (!topic || !researchGroup || !researchArea || !studentGroup) {
         return res.status(400).json({
             success: false,
-            message: 'Please enter all fields'
+            message: 'Please enter all fields',
+            requestBody: req.body
         });
     }
 
@@ -71,18 +72,19 @@ const registerResearchTopic = asyncHandler(async (req, res) => {
         });
     }
 
-    //if research topic does not exist
+    //if research topic exist
     const newResearchTopic = new ResearchTopic({
         topic,
-        reaserchGroup,
-        researchArea
+        researchGroup,
+        researchArea,
+        studentGroup
     });
 
-    const savedResearchTopic = await newResearchTopic.save();
+    await newResearchTopic.save();
 
     // const researchTopic = await ResearchTopic.create(req.body);
 
-    if (savedResearchTopic) {
+    if (newResearchTopic) {
         return res.status(200).json({
             success: true,
             data: newResearchTopic
