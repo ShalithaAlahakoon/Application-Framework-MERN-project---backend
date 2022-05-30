@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
+    id :{
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: [true, 'Please add a name']
@@ -15,10 +19,14 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please add a password']
     },
-    role: {
+    mobileNumber: {
         type: String,
-        required: [true, 'Please add a role']
+        required: [true, 'Please add a mobile number']
     }
+    // role: {
+    //     type: String,
+    //     required: [true, 'Please add a role']
+    // }
 },
 {
     timestamps: true
