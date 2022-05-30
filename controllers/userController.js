@@ -10,11 +10,16 @@ const User = require('../models/user');
 
 const registerUser = asyncHandler(async(req, res) => {
 
+
     const { id, mobileNumber,  name, email, password
         // , role 
     } = req.body;
 
     if(!name || !email || !password || !id || !mobileNumber) {
+
+
+    if(!id || !name || !email || !mobileNumber || !password ) {
+
         return res.status(400).json({
             success: false,
             message: 'Please enter all fields'
@@ -43,7 +48,7 @@ const registerUser = asyncHandler(async(req, res) => {
         email,
         mobileNumber,
         password: hashedPassword,
-        
+
     });
 
     //save user
@@ -101,14 +106,14 @@ const loginUser = asyncHandler(async(req, res) => {
 //@access Private
 
 const getUser = asyncHandler( async(req, res) => {
-    const {_id,name, email, role} = await User.findById(req.user._id).select('-password');
+    const {id, name, email, mobileNumber} = await User.findById(req.user._id).select('-password');
     res.status(200).json({
         success: true,
         data: {
-            _id,
+            id,
             name,
             email,
-            role
+            mobileNumber
         }
     });
     
@@ -118,10 +123,10 @@ const getUser = asyncHandler( async(req, res) => {
 //genarate token
 const genarateToken = (user) => {
     return jwt.sign({
-        id: user._id,
+        id: user.id,
         name: user.name,
         email: user.email,
-        role: user.role
+        mobileNumber: user.mobileNumber
     }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN
     });
