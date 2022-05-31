@@ -47,7 +47,7 @@ const registerUser = asyncHandler(async(req, res) => {
         name,
         email,
         mobileNumber,
-        password: hashedPassword,
+        password: hashedPassword
 
     });
 
@@ -74,8 +74,8 @@ const registerUser = asyncHandler(async(req, res) => {
 
 
     res.json({message: 'User registered'});
-}
-)
+}});
+
 //@desc Authenticate user
 //@route POST /api/user/login
 //@access public
@@ -99,8 +99,7 @@ const loginUser = asyncHandler(async(req, res) => {
         });
     }
     
-}
-)
+})
 //@desc get user data
 //@route GET /api/user/getUser
 //@access Private
