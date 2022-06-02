@@ -3,23 +3,21 @@ const Schema = mongoose.Schema;
 
 const DocumentSchema = new Schema({
 
-    group_name: {
+    title: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     file_path: {
         type: String,
         required: true
     },
-    file_name: {
-        type: String,
-        required: true
-    },
-    file_type: {
+    file_mimetype: {
         type: String,
         required: true
     }
@@ -30,4 +28,4 @@ const DocumentSchema = new Schema({
 );
 
 
-module.exports = mongoose.model('Document',DocumentSchema);
+module.exports = mongoose.model('Document', DocumentSchema);

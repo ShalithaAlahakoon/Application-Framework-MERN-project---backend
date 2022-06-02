@@ -40,7 +40,7 @@ app.use('/api/user', require('./routes/userRoutes'));
 //research topic routes
 app.use('/api/researchTopic', require('./routes/researchTopicRoutes'));
 //document routes
-app.use('/api/document', require('./routes/documentRoutes'));
+app.use('/api/document', require('./controllers/documentController'));
 
 
 // ################## Routes end ####################//
