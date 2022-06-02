@@ -1,0 +1,126 @@
+const Document = require('../models/Document');
+const asyncHandler = require('express-async-handler');
+const path = require('path');
+const express = require('express');
+const multer = require('multer');
+const File = require('../model/file');
+const Router = express.Router();
+
+//@desc get all students
+//@route POST /api/student/
+//@access private
+
+// const getAllStudents = asyncHandler(async (req, res) => {
+//     const students = await Student.find();
+
+//     if (students) {
+//         res.status(200).json({
+//             success: true,
+//             data: students
+//         });
+//     }
+//     else {
+//         res.status(400).json({
+//             success: false,
+//             message: 'No students found'
+//         });
+//         throw new Error('No students found');
+//     }
+// });
+
+
+//@desc get student by id
+//@route POST /api/student/:id
+//@access private
+
+// const getStudentById = asyncHandler(async (req, res) => {
+//     const student = await Student.findById(req.params.id);
+
+//     if (student) {
+//         res.status(200).json({
+//             success: true,
+//             data: student
+//         });
+//     }
+//     else {
+//         res.status(400).json({
+//             success: false,
+//             message: 'No student found'
+//         });
+//         throw new Error('No student found');
+//     }
+// });
+
+//@desc upload and save documents
+//@route POST /api/document/upload
+//@access public
+
+const uploadDocument = asyncHandler(async (req, res) => {
+
+   
+});
+
+//@desc update student
+//@route POST /api/student/update/:id
+//@access private
+
+// const updateStudent = asyncHandler(async (req, res) => {
+
+//     const student = await Student.findById(req.params.id);
+
+//     if (!student) {
+//         return res.status(400).json({
+//             success: false,
+//             message: 'No student found'
+//         });
+//     } else {
+//         const { name, email, itNumber, phoneNumber, address, specialization } = req.body;
+
+//         student.name = name;
+//         student.email = email;
+//         student.itNumber = itNumber;
+//         student.phoneNumber = phoneNumber;
+//         student.address = address;
+//         student.specialization = specialization;
+
+//         await student.save();
+
+//         res.status(200).json({
+//             success: true,
+//             data: student
+//         });
+//     }
+// });
+
+//@desc delete student
+//@route POST /api/student/delete/:id
+//@access private
+
+// const deleteStudent = asyncHandler(async (req, res) => {
+
+//     const student = await Student.findById(req.params.id);
+
+//     if (!student) {
+//         return res.status(400).json({
+//             success: false,
+//             message: 'No student found'
+//         });
+//     } else {
+//         await student.remove();
+
+//         res.status(200).json({
+//             success: true,
+//             message: 'Student Successfully Deleted'
+//         });
+//     }
+// });
+
+
+
+module.exports = {
+    getAllDocuments,
+    getDocumentById,
+    uploadDocument,
+    updateDocument,
+    deleteDocument
+};
