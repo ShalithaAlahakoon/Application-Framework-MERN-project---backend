@@ -2,7 +2,7 @@ const Supervisor = require('../models/Supervisor');
 const asyncHandler = require('express-async-handler');
 
 //@desc get all supervisors
-//@route POST /api/supervisor/
+//@route GET /api/supervisor/
 //@access private
 
 const getAllSupervisors = asyncHandler(async (req, res) => {
