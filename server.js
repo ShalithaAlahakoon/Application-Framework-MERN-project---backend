@@ -41,6 +41,8 @@ app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/researchTopic', require('./routes/researchTopicRoutes'));
 //document routes
 app.use('/api/document', require('./controllers/documentController'));
+//supervisor routes
+app.use('/api/supervisor', require('./routes/supervisorRoutes'));
 
 
 // ################## Routes end ####################//
