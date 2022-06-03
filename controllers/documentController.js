@@ -34,9 +34,11 @@ Router.post(
   upload.single('file'),
   async (req, res) => {
     try {
-      const { title, description } = req.body;
+      const { title, description, groupID, type } = req.body;
       const { path, mimetype } = req.file;
       const file = new Documents({
+        groupID,
+        type,
         title,
         description,
         file_path: path,

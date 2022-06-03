@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DocumentSchema = new Schema({
-
+    groupID: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true,
