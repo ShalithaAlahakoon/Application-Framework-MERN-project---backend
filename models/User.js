@@ -16,7 +16,7 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please your SLIIT email']
     },
-    moboleNumber: {
+    mobileNumber: {
         type: String,
         required: [true, 'Please enter a mobile']
     },
