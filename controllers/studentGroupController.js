@@ -21,7 +21,10 @@ const getAllStudentGroups = asyncHandler(async (req, res, next) => {
 const getStudentGroupById = asyncHandler(async (req, res, next) => {
     const studentGroup = await studentGroupModel.findById(req.params.id);
     if (!studentGroup) {
-        return next(new ErrorResponse(`Student group not found with id of ${req.params.id}`, 404));
+        res.status(404).json({
+            success: false,
+            message: 'No student group found with the id = ' + req.params.id
+        });
     }
     res.status(200).json({
         success: true,
@@ -30,7 +33,7 @@ const getStudentGroupById = asyncHandler(async (req, res, next) => {
 });
 
 //@desc register students group
-//@route POST /api/group/add
+//@route POST /api/group/insert
 //@access public
 
 const registerStudentGroup = asyncHandler(async (req, res, next) => {
@@ -39,7 +42,10 @@ const registerStudentGroup = asyncHandler(async (req, res, next) => {
 
     //checking data
     if (!name || !year || !semester || !batch || !student1 || !student2 || !student3 || !student4) {
-        return next(new ErrorResponse(`Please enter all fields`, 400));
+       return res.status(400).json({
+            success: false,
+            message: 'Please enter all fields'
+        });
     }
 
     //check if student group already exists
@@ -47,7 +53,10 @@ const registerStudentGroup = asyncHandler(async (req, res, next) => {
 
     //if student group exists
     if (studentGroup) {
-        return next(new ErrorResponse(`Student group already exists with this name`, 400));
+       return res.status(400).json({
+            success: false,
+            message: 'Group already exsists'
+        });
     }
 
     //create student group

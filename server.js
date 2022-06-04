@@ -9,6 +9,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 
+app.use(bodyParser.json());
+
+
 // Connect to mongodb
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -36,8 +39,16 @@ app.use('/api/group', require('./routes/studentGroupRoutes'));
 app.use('/api/presentationMarks', require('./routes/evaluatePresentationRoutes'));
 //user routes
 app.use('/api/user', require('./routes/userRoutes'));
+
 //topicFeedback routes
 app.use('/api/topicFeedback', require('./routes/evaluateTopicRoutes'));
+
+//research topic routes
+app.use('/api/researchTopic', require('./routes/researchTopicRoutes'));
+//document routes
+app.use('/api/document', require('./controllers/documentController'));
+//supervisor routes
+app.use('/api/supervisor', require('./routes/supervisorRoutes'));
 
 
 
